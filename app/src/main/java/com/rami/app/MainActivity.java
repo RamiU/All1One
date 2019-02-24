@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.Toast;
 
-import com.rami.all1one.Animaciones;
+import com.rami.all1one.AnimacionUtils;
+import com.rami.all1one.NotificacionUtils;
+import com.rami.all1one.PantallaUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +20,7 @@ View view;
         setContentView(R.layout.activity_main);
 
 
-         view = findViewById(R.id.boton);
+        /// view = findViewById(R.id.boton);
 
       // Animaciones.ocultar(view, 2000, ValueAnimator.INFINITE)
        // .start();
@@ -33,6 +31,7 @@ View view;
 
        // view.animate().setDuration(3000).alpha(0).setStartDelay(2000)
         //.alpha(1).rotation(180);
+
 
 
 
