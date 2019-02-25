@@ -16,20 +16,22 @@ import android.view.animation.CycleInterpolator;
 
 import androidx.annotation.IntDef;
 
-public class AnimacionUtils {
+public final class AnimacionUtils {
+      private AnimacionUtils(){}
 
-    public  ObjectAnimator ocultar(View view, long duracion,int nRepeat){
+    public  static ObjectAnimator ocultar(View view, long duracion,int nRepeat){
        // PropertyValuesHolder x = PropertyValuesHolder.ofFloat()
         ObjectAnimator fadeOut = ObjectAnimator.ofFloat(view, View.ALPHA,
                 0f,1f);
         fadeOut.setDuration(duracion);
         fadeOut.setRepeatMode(ValueAnimator.REVERSE);
+
         fadeOut.setRepeatCount(nRepeat);
 
         //fadeOut.start();
         return fadeOut;
     }
-    public  ObjectAnimator trasladar(View view,int nRepeat,int duracion,float posX,float posY){
+    public static ObjectAnimator trasladar(View view,int nRepeat,int duracion,float posX,float posY){
 
         PropertyValuesHolder trasX = PropertyValuesHolder.ofFloat(View.TRANSLATION_X,0,posX);
         PropertyValuesHolder trasY = PropertyValuesHolder.ofFloat(View.TRANSLATION_Y,0,posY);
@@ -44,7 +46,7 @@ public class AnimacionUtils {
     }
 
 
-    public  ObjectAnimator rotar(View view,int duracion,float rotacion,int nRepeticion){
+    public  static ObjectAnimator rotar(View view,int duracion,float rotacion,int nRepeticion){
         ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(view,
                 View.ROTATION, rotacion);
         rotationAnimator.setDuration(duracion);
@@ -58,10 +60,10 @@ public class AnimacionUtils {
         .start();
     }
 
-    public  void Simplealpha(View view) {
+    public static void Simplealpha(View view) {
         view.animate().alpha(0).start();
     }
-    public  void SimpleScale(View view,int duracion,float escalaX,float escalaY) {
+    public static void SimpleScale(View view,int duracion,float escalaX,float escalaY) {
 
         view.animate().scaleX(escalaX).setDuration(duracion).scaleY(escalaY)
         .setListener(new AnimatorListenerAdapter() {
@@ -73,7 +75,7 @@ public class AnimacionUtils {
         });
     }
 
-    public  void Simpletranslate(View view,int posX,int posY,long duracion) {
+    public static void Simpletranslate(View view,int posX,int posY,long duracion) {
         view.animate().translationX(posX).translationY(posY)
                 .setDuration(duracion)
                 .start();
@@ -85,7 +87,7 @@ public class AnimacionUtils {
      * @param repetir true si desea que este set se repita indefinidamente
      * @param animacion una lista de animacion
      */
-    public void animationSet(final boolean repetir, final Animator... animacion){
+    public static void animationSet(final boolean repetir, final Animator... animacion){
 
         AnimatorSet animatorSet = new AnimatorSet();
 

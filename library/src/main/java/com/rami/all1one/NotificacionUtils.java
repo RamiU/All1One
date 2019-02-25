@@ -17,7 +17,11 @@ import androidx.core.app.TaskStackBuilder;
 public class NotificacionUtils {
     private NotificationManager mNotificationManager;
     private Activity mActivity;
-    public NotificacionUtils(Activity activity){
+
+    public static NotificacionUtils newInstancia(Activity activity) {
+        return new NotificacionUtils(activity);
+    }
+    private NotificacionUtils(Activity activity){
         this.mActivity = activity;
         this.mNotificationManager
                 =(NotificationManager)activity.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -58,10 +62,7 @@ public class NotificacionUtils {
                 builder.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE);
             }
 
-            /**Use getIntent if you want to Open Current Activity
-             * Else Use
-             * Intent intent = new Intent(getApplicationContext, MyClass.class);
-             * Use Your Class Name instead of MyClass**/
+            // util por si es necesario abrir algun layout de la app desde la notif
             Intent intent = this.mActivity.getIntent();
 
             /**Create a TaskStackBuilder**/
