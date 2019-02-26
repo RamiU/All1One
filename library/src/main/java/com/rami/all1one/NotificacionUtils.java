@@ -28,10 +28,9 @@ public class NotificacionUtils {
     }
 
        @TargetApi(Build.VERSION_CODES.O)
-       private NotificationChannel notifCanal(String idCanal,String nombreCanal){
+       public NotificationChannel notifCanal(String idCanal,String nombreCanal){
         NotificationChannel canal =
                 new NotificationChannel(idCanal, nombreCanal, NotificationManager.IMPORTANCE_DEFAULT);
-
            canal.enableLights(true);
            canal.setLightColor(Color.RED);
            canal.setShowBadge(true);
@@ -67,13 +66,10 @@ public class NotificacionUtils {
 
             /**Create a TaskStackBuilder**/
             TaskStackBuilder stackBuilder = TaskStackBuilder.create(this.mActivity);
-
             /**Add NextIntent**/
             stackBuilder.addNextIntent(intent);
             PendingIntent pendingIntent = stackBuilder.getPendingIntent(001, PendingIntent.FLAG_UPDATE_CURRENT);
-
             builder.setContentIntent(pendingIntent);
-
 
             if (mNotificationManager != null)
                 mNotificationManager.notify(notifyId, builder.build());

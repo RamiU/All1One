@@ -13,7 +13,7 @@ public final class AlertaUtils{
     private AlertaUtils(){}
 
 
-    public static void progressDialog(Context context){
+    public static ProgressDialog progressHorizontalDialog(Context context){
 
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setTitle("Actualizando");
@@ -24,28 +24,17 @@ public final class AlertaUtils{
         progressDialog.getWindow().setGravity(Gravity.BOTTOM); // establece la posicion de la ventana
         progressDialog.setCancelable(true);
         progressDialog.setCanceledOnTouchOutside(true);
-        progressDialog.show();
+        return progressDialog;
+
     }
 
-    public static void alertDialog(Context contexto,String titulo,String mensaje,boolean cancelable){
+    public static AlertDialog.Builder alertDialog(Context contexto){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(contexto);
-        builder.setTitle(titulo);
-        builder.setMessage(mensaje);
-        builder.setCancelable(cancelable);
-        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-
-        }});
-
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-        }});
-
-        builder.show();
+        builder.setTitle("");
+        builder.setMessage("");
+        builder.setCancelable(false);
+        return builder;
     }
 
     public static void toast(Context context, String mensaje){
