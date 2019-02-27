@@ -13,11 +13,12 @@ public class SensorUtils {
     private SensorEventListener listener;
     private SensorManager manager;
 
-    private SensorUtils(Activity activity) {
+    private SensorUtils(Activity activity,SensorEventListener listener) {
         this.manager = (SensorManager) activity.getSystemService(Context.SENSOR_SERVICE);
+        this.listener = listener;
     }
-    public static SensorUtils newInstancia(Activity activity) {
-        return new SensorUtils(activity);
+    public static SensorUtils newInstancia(Activity activity,SensorEventListener listener) {
+        return new SensorUtils(activity,listener);
     }
 
 
@@ -28,10 +29,6 @@ public class SensorUtils {
     public  void removerListener(){
         if(listener != null)
            this.manager.unregisterListener(listener);
-    }
-
-    public  void setListener(SensorEventListener listener){
-        this.listener = listener;
     }
 
     public Sensor getSensor(int tipoSensor){
