@@ -11,7 +11,7 @@ public interface IRecyclerCallback <T extends RecyclerView.ViewHolder,X> {
 
     void onBindViewHolder(@NonNull T holder, int position);
 
-    void getItemViewType(int position);
+    int getItemViewType(int position);
 
     void item(X item, int pos);
 

@@ -33,13 +33,12 @@ public class AdaptadorUtils {
         @Override
         public void onBindViewHolder(@NonNull T holder, int position) {
 
-            callback.item(this.lista.get(position),position);
-
             callback.onBindViewHolder( holder, position);
+            callback.item(this.lista.get(position),position);
         }
         @Override
         public int getItemViewType(int position) {
-            return super.getItemViewType(position);
+            return callback.getItemViewType(position);
         }
 
         @Override

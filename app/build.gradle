@@ -28,6 +28,7 @@ dependencies {
     implementation project(':library')
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.github.nisrulz:android-utils:1.0.8'
+    implementation 'com.karumi:dexter:5.0.0'
 
     def retrofitVersion = "2.4.0";
 
