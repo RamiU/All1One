@@ -13,18 +13,24 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitUtils {
-    /**
-     *  configura los distintos parametros del retrofit, usa gsonConverterFactory por defecto
-     *  debes llamar a create() y pasarle el rest service como parametro
-     * @return el objecto retrofit builder
-     */
-    public static Retrofit getRetrofitBuilder() {
-
+    private static Retrofit.Builder builder(){
         return new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-               //.client(getClienteHttp())
-                .build();
+                .addConverterFactory(GsonConverterFactory.create());
+    }
+    /**
+     *  configura los distintos parametros del retrofit, usa gsonConverterFactory por defecto
+     * @return el objecto retrofit builder
+     */
+    public static <T> T getRetrofitRest(Class<T> service) {
+                return builder()
+                .build().create(service);
+    }
+
+    public static <T> T getRetrofitRest(Class<T> service,OkHttpClient client) {
+        return builder()
+                .client(client)
+                .build().create(service);
     }
 
     public static OkHttpClient getClienteHttp() {
